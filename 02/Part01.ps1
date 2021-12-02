@@ -4,8 +4,8 @@ $depth = 0
 
 foreach ($x in $data) {
     switch -Wildcard ($x) {
-        'forward*' {$horizontal += [int]$x.trimstart('forward ')}
-        'down*' {$depth += [int]$x.trimstart('down ')}
+        'forward*' {$horizontal += [int]$x.trimstart('forward')}
+        'down*' {$depth += [int]$x.trimstart('down')}
         'up*' {$depth -= [int]$x.trimstart('up')}
     }
 }

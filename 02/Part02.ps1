@@ -6,10 +6,10 @@ $aim = 0
 foreach ($x in $data) {
     switch -Wildcard ($x) {
         'forward*' {
-            $horizontal += [int]$x.trimstart('forward ')
-            $depth += ($aim * [int]$x.trimstart('forward '))
+            $horizontal += [int]$x.trimstart('forward')
+            $depth += ($aim * [int]$x.trimstart('forward'))
         }
-        'down*' {$aim += [int]$x.trimstart('down ')}
+        'down*' {$aim += [int]$x.trimstart('down')}
         'up*' {$aim -= [int]$x.trimstart('up')}
     }
 }
