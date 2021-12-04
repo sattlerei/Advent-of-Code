@@ -1,7 +1,13 @@
 function find-winner {
     Param($inputdata, $bitnumber, $datatype)
-    if (Test-Path zeros.txt) {Remove-Item .\zeros.txt}
-    if (Test-Path ones.txt) {Remove-Item .\ones.txt}
+
+    if (Test-Path zeros.txt) {
+        Remove-Item .\zeros.txt
+    }
+    if (Test-Path ones.txt) {
+        Remove-Item .\ones.txt
+    }
+
     foreach ($line in $inputdata) {
         switch ($line[$bitnumber]) {
             0 {
@@ -16,7 +22,7 @@ function find-winner {
     }
 
     switch ($datatype) {
-        "oxy" {
+        'oxy' {
             if ($zeros -gt $ones) {
                 return (Get-Content .\zeros.txt)
             }
@@ -24,7 +30,7 @@ function find-winner {
                 return (Get-Content .\ones.txt)
             }
         }
-        "co2" {
+        'co2' {
             if ($zeros -le $ones) {
                 return (Get-Content .\zeros.txt)
             }
@@ -43,7 +49,7 @@ if (Test-Path .\zeros.txt) {Remove-Item .\zeros.txt}
 if (Test-Path .\ones.txt) {Remove-Item .\ones.txt}
 
 for ($i = 0; $i -lt $numbits; $i++) {
-    $data = find-winner -inputdata $data -bitnumber $i -datatype "oxy"
+    $data = find-winner -inputdata $data -bitnumber $i -datatype 'oxy'
     if ($data.count -eq 1) {
         break;
     }
@@ -57,7 +63,7 @@ if (Test-Path .\zeros.txt) {Remove-Item .\zeros.txt}
 if (Test-Path .\ones.txt) {Remove-Item .\ones.txt}
 
 for ($i = 0; $i -lt $numbits; $i++) {
-    $data = find-winner -inputdata $data -bitnumber $i -datatype "co2"
+    $data = find-winner -inputdata $data -bitnumber $i -datatype 'co2'
     if ($data.count -eq 1) {
         break;
     }
